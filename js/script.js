@@ -14,6 +14,7 @@ const loadData = topic => {
   fetch(`https://newsapi.org/v2/everything?q=${topic}&apiKey=c612a5c4fb764d8c8dc0446a96051ee8`)
   .then(res => res.json())
   .then(data => displayNews(data.articles))
+  .catch(error => console.log(error))
 }
 
 
@@ -23,7 +24,6 @@ const displayNews = data => {
   const newsContainer = document.getElementById('news-container');
   newsContainer.textContent = '';
   data.forEach(element => {
-    console.log(element.urlToImage);
     const div = document.createElement('div');
     div.classList.add('col');
     div.innerHTML = `
